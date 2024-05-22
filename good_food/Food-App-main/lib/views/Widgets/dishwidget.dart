@@ -22,6 +22,7 @@ class _RecipieTileState extends State<RecipieTile> {
   RecipeController controller=Get.put(RecipeController());
 
   _launchURL(String url) async {
+
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -31,7 +32,6 @@ class _RecipieTileState extends State<RecipieTile> {
 
 @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     setState(() {
 
@@ -51,16 +51,20 @@ class _RecipieTileState extends State<RecipieTile> {
       children:[
 
         GestureDetector(
-          onTap: () {
-            if (kIsWeb) {
-              _launchURL(widget.recipeModel.source);
-            } else {
-              Get.toNamed(
-                MyPagesName.recipefullview,
-                arguments: widget.recipeModel.url,
-              );
+          onTap: () async{
+            FocusScope.of(context).unfocus();
+            await Future.delayed(Duration(milliseconds: 200)).then((_) {
+              if (kIsWeb) {
+                _launchURL(widget.recipeModel.source);
+              } else {
+                Get.toNamed(
+                  MyPagesName.recipefullview,
+                  arguments: widget.recipeModel.url,
+                );
+              }
+            });
 
-            }
+
           },
           child: Container(
             margin: EdgeInsets.symmetric(vertical: 2, horizontal: 8), // Reduced vertical margin

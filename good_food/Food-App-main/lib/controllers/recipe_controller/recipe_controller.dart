@@ -70,7 +70,7 @@ class RecipeController extends GetxController {
       return;
     }
 
-    if (catname == 'all') {
+    if (catname == 'All') {
       catname = "Indian";
     }
     selectCat = catname;
