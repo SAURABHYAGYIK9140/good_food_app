@@ -55,7 +55,8 @@ class RecipeController extends GetxController {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
       isConnected.value = false;
-      Get.snackbar('No Internet', 'Please check your internet connection.');
+      Get.snackbar('No Internet', 'Please check your internet connection.', backgroundColor: Colors.red, // Change this to the desired color
+        colorText: Colors.white,);
     } else {
       isConnected.value = true;
     }

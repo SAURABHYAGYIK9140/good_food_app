@@ -74,7 +74,8 @@ class _HomeState extends State<Home> {
 
     if (connectivityResult == ConnectivityResult.none) {
       isConnected = false; // Use assignment operator
-      Get.snackbar('No Internet', 'Please check your internet connection.');
+      Get.snackbar('No Internet', 'Please check your internet connection.', backgroundColor: Colors.red, // Change this to the desired color
+        colorText: Colors.white,);
     } else {
       isConnected = true; // Use assignment operator
     }
