@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:http/http.dart' as http;
 import '../../constants/AppConstraints.dart';
 import '../../controllers/ConnectivityController.dart';
@@ -31,13 +32,25 @@ class _HomeState extends State<Home> {
   String query = "";
   TextEditingController textEditingController = new TextEditingController();
   RecipeController mainController = Get.put(RecipeController());
-  final ScrollController _scrollController = ScrollController();
+  late final ScrollController _scrollController;
+
+  double _fabHeight = 56.0;
+  bool _isFabExpanded = true;
 
   // final controller = Get.find<ConnectivityController>();
+  void _scrollListener() {
+    print("_scrollListener");
+    setState(() {
+      _isFabExpanded = _scrollController.position.userScrollDirection ==
+          ScrollDirection.forward;
+    });
+  }
 
   @override
   void initState() {
     super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_scrollListener);
 
     if (mainController.isConnected.value) {
     } else {
@@ -74,8 +87,11 @@ class _HomeState extends State<Home> {
 
     if (connectivityResult == ConnectivityResult.none) {
       isConnected = false; // Use assignment operator
-      Get.snackbar('No Internet', 'Please check your internet connection.', backgroundColor: Colors.red, // Change this to the desired color
-        colorText: Colors.white,);
+      Get.snackbar(
+        'No Internet', 'Please check your internet connection.',
+        backgroundColor: Colors.red, // Change this to the desired color
+        colorText: Colors.white,
+      );
     } else {
       isConnected = true; // Use assignment operator
     }
@@ -97,11 +113,35 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: ElevatedButton(
-          onPressed: () {
-            Get.to(Wishlist());
-          },
-          child: Text("See your wishlist")),
+      // floatingActionButton: ElevatedButton(
+      //     onPressed: () {
+      //       Get.to(Wishlist());
+      //     },
+      //     child: Text("See your wishlist")),
+      floatingActionButton: AnimatedContainer(
+        duration: Duration(milliseconds: 200),
+        width: _isFabExpanded ? 180.0 : 56.0,
+        height: 56.0,
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [const Color(0xffffffff), const Color(0xffb3cce0)],
+              begin: FractionalOffset.topRight,
+              end: FractionalOffset.bottomLeft,
+            ),
+            borderRadius: BorderRadius.circular(28.0), // Adjust as necessary
+          ),
+          child: FloatingActionButton.extended(
+            onPressed: () {Get.to(Wishlist());},
+            backgroundColor: Colors.transparent,
+            icon: Padding(padding: EdgeInsets.only(left: 4,top: 2), child:
+            Icon(Icons.favorite,color: Colors.black45,)),
+            label: _isFabExpanded ? Text("See your wishlist") : Container(),
+            isExtended: _isFabExpanded,
+          ),
+        ),
+      ),
+
       body: Stack(
         children: <Widget>[
           Container(

@@ -6,9 +6,13 @@
       <excludeFolder url="file://$MODULE_DIR$/good_food/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/good_food/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/good_food/build" />
+      <excludeFolder url="file://$MODULE_DIR$/good_food/Food-App-main/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/good_food/Food-App-main/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/good_food/Food-App-main/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />
+    <orderEntry type="library" name="Dart Packages" level="project" />
   </component>
 </module>
