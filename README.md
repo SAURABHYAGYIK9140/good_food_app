@@ -6,7 +6,7 @@ The Good Food Recipe Search App is a mobile application designed to help users d
 
 - **Ingredient-based Search:** Users can search for recipes by entering ingredients they have.
 - **Category-based Search:** Users can browse recipes by categories such as breakfast, lunch, dinner, etc.
-- **State Management:** Implements state management for efficient app performance and smooth user interaction.
+- **State Management:** Utilizes GetX for efficient state management, ensuring smooth user interactions, seamless route handling, and streamlined API calls with integrated snackbar notifications.
 - **Local Storage:** Utilizes Hive for storing favorite recipes locally on the device.
 - **Offline Access:** Provides functionality to check for internet connectivity and gracefully handle offline scenarios.
 
