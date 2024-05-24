@@ -15,7 +15,7 @@ The Good Food Recipe Search App is a mobile application designed to help users d
 - **Flutter:** The app is built using the Flutter framework for cross-platform mobile app development.
 - **Dart:** The programming language used for implementing app logic and functionality.
 - **Hive:** A lightweight and fast NoSQL database used for local storage of favorite recipes.
-- **State Management:** Utilizes Flutter's built-in state management solutions for managing app state efficiently.
+- **State Management:** Utilizes GetX for efficient state management, ensuring smooth user interactions, seamless route handling, and streamlined API calls.
 - **Connectivity:** Integrates with Flutter Connectivity plugin to check for internet connectivity.
 
 ## Getting Started
