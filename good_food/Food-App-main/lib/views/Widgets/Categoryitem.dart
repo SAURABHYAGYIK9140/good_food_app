@@ -16,7 +16,7 @@ class _CategoryItemState extends State<CategoryItem> {
   List<String> categoryList = [
     "All",
     "Vegetarian",
-    "Vegan",
+    "Vegan","breakfast", "lunch", "dinner",
     "Gluten-Free",
     "Paleo",
     "Keto",
@@ -37,6 +37,8 @@ class _CategoryItemState extends State<CategoryItem> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             child: InkWell(
               onTap: () {
+                FocusScope.of(context).requestFocus(FocusNode());
+
                 setState(() {
                   selectedIndex = index;
                 });

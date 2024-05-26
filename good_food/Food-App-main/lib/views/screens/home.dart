@@ -293,6 +293,9 @@ class _HomeState extends State<Home> {
                           SizedBox(width: 16),
                           InkWell(
                             onTap: () async {
+                              FocusScope.of(context).requestFocus(FocusNode());
+
+
                               if (textEditingController.text.isNotEmpty) {
                                 mainController
                                     .getDataByCat(textEditingController.text);
